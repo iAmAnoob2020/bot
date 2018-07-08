@@ -1,0 +1,14 @@
+{
+  "Owner": {
+    "name":"Owner",
+    "type":"Role",
+    "price":"10000",
+    "desc":"Buying this gives you Owner on the server!"
+  },
+  "Developer": {
+    "name":"Developer",
+    "type":"Role",
+    "price":"9000",
+    "desc":"Buying this gives you Developer on the server!"
+  }
+}
