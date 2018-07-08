@@ -69,7 +69,7 @@ module.exports.run = async (bot, message, args) => {
                 // You can have IF statements here to run something when they buy an item.
                 if (itemName === 'Owner') {
                   let oRole = message.guild.roles.find(`name`, "Owner");
-                  if(message.member.roles.has(oRole.id)){
+                  if(!message.member.roles.has(oRole.id)){
                     economy.updateBalance(message.author.id, parseInt(`-${itemPrice}`));
                     return message.reply("They already have that role.");
                   }else
@@ -79,7 +79,7 @@ module.exports.run = async (bot, message, args) => {
 
                   if (itemName === 'Developer') {
                     let dRole = message.guild.roles.find(`name`, "Developer");
-                    if(message.member.roles.has(dRole.id)){
+                    if(!message.member.roles.has(dRole.id)){
                       economy.updateBalance(message.author.id, parseInt(`-${itemPrice}`));
                       return message.reply("They already have that role.");
                     }else
