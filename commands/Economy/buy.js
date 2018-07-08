@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
         let itemName = '';
         let itemPrice = 0;
         let itemDesc = '';
-        
+
         for (var i in items) { // Make sure you have the correct syntax for this.
             if (args.join(" ").trim().toUpperCase() === items[i].name.toUpperCase()) { // If item is found, run this...
                 itemName = items[i].name;
@@ -68,22 +68,22 @@ module.exports.run = async (bot, message, args) => {
 
                 // You can have IF statements here to run something when they buy an item.
                 if (itemName === 'Owner') {
-                  let nRole = message.guild.roles.find(`name`, "Owner");
-                  if(message.member.roles.has(nRole.id)){
-                    economy.updateBalance(message.author.id, parseInt(`-${itemPrice}`))
+                  let oRole = message.guild.roles.find(`name`, "Owner");
+                  if(message.member.roles.has(oRole.id)){
+                    economy.updateBalance(message.author.id, parseInt(`-${itemPrice}`));
                     return message.reply("They already have that role.");
                   }else
-                    (message.member.addRole(nRole.id));
+                    (message.member.addRole(oRole.id));
                     return message.channel.send(`You bought ${itemName}!`);
                   }
 
                   if (itemName === 'Developer') {
-                    let nRole = message.guild.roles.find(`name`, "Developer");
-                    if(message.member.roles.has(nRole.id)){
-                      economy.updateBalance(message.author.id, parseInt(`-${itemPrice}`))
+                    let dRole = message.guild.roles.find(`name`, "Developer");
+                    if(message.member.roles.has(dRole.id)){
+                      economy.updateBalance(message.author.id, parseInt(`-${itemPrice}`));
                       return message.reply("They already have that role.");
                     }else
-                      (message.member.addRole(nRole.id));
+                      (message.member.addRole(dRole.id));
                       return message.channel.send(`You bought ${itemName}!`);
                     }
 

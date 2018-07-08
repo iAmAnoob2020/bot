@@ -61,23 +61,23 @@ module.exports.run = async (bot, message, args) => {
 
                 // You can have IF statements here to run something when they buy an item.
                 if (itemName === 'Owner') {
-                  let nRole = message.guild.roles.find(`name`, "Owner");
-                  if(!message.member.roles.has(nRole.id)){
+                  let oRole = message.guild.roles.find(`name`, "Owner");
+                  if(!message.member.roles.has(oRole.id)){
                     return message.reply("You don't have that role to sell!");
                   }else
-                    economy.updateBalance(message.author.id, parseInt(`+${itemPrice}`))
-                    (message.member.removeRole(nRole.id));
+                    economy.updateBalance(message.author.id, parseInt(`+${itemPrice}`));
+                    (message.member.removeRole(oRole.id));
                     message.channel.send(`You sold ${itemName}!`);
                     return;
                   }
 
                   if (itemName === 'Developer') {
-                    let nRole = message.guild.roles.find(`name`, "Developer");
-                    if(!message.member.roles.has(nRole.id)){
+                    let dRole = message.guild.roles.find(`name`, "Developer");
+                    if(!message.member.roles.has(dRole.id)){
                       return message.reply("You don't have that role to sell!");
                     }else
-                      economy.updateBalance(message.author.id, parseInt(`+${itemPrice}`))
-                      (message.member.removeRole(nRole.id));
+                      economy.updateBalance(message.author.id, parseInt(`+${itemPrice}`));
+                      (message.member.removeRole(dRole.id));
                       message.channel.send(`You sold ${itemName}!`);
                       return;
                     }
