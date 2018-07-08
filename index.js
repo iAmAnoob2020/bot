@@ -66,7 +66,7 @@ bot.on("channelCreate", async channel => {
 
   console.log(`${channel.name} has been created.`);
 
-  let sChannel = channel.guild.channels.find(`name`, "log");
+  let sChannel = channel.guild.channel.find(`name`, "log");
   sChannel.send(`${channel} has been created.`)
 });
 
