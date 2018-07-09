@@ -66,7 +66,7 @@ bot.on("channelCreate", async channel => {
 
   console.log(`${channel.name} has been created.`);
 
-  let sChannel = channel.guild.channel.find(`name`, "log");
+  let sChannel = channel.guild.channels.find(`name`, "log");
   sChannel.send(`${channel} has been created.`)
 });
 
@@ -90,6 +90,48 @@ bot.on("message", async message => {
     };
   }
 
+  let xp = require("./xp.json");
+  let xpAdd = Math.floor(Math.random() * 7) + 8;
+
+  if(!xp[message.author.id]){
+    xp[message.author.id] = {
+      xp: 0,
+      level: 1,
+      prestige: 0
+    };
+
+  }
+
+  let nxtLvl = xp[message.author.id].level * 300;
+  let curxp = xp[message.author.id].xp;
+  let curlvl = xp[message.author.id].level;
+  let prestige = xp[message.author.id].prestige;
+  let difference = nxtLvl - curxp;
+
+  xp[message.author.id].xp = curxp + xpAdd;
+
+  if(nxtLvl <= xp[message.author.id].xp){
+    xp[message.author.id].level = curlvl + 1;
+    xp[message.author.id].prestige = prestige + 1;
+
+    if(xp[message.author.id].level === 100){
+      xp[message.author.id].prestige + 1;
+      let presEmbed = new Discord.RichEmbed()
+      .setAuthor(message.author.username)
+      .setColor("#ff0000")
+      .addField("Level", curlvl + 1,true)
+      .addField("XP", curxp,true)
+      .addField("Prestige", prestige + 1,true)
+      .setFooter(`${difference} XP till next level up!`, message.author.displayAvatarURL);
+
+      message.channel.send(presEmbed).then(msg => {msg.delete(5000)});
+    }
+  }
+
+  fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+    if(err) console.log(Err)
+  });
+
   let prefix = prefixes[message.guild.id].prefixes;
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
@@ -103,4 +145,4 @@ bot.on("message", async message => {
   }
 });
 
-bot.login(process.env.BOT_TOKEN);
+bot.login(config.token);
