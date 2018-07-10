@@ -1,20 +1,3 @@
-Skip to content
-
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @iAmAnoob2020 Sign out
-1
-3 3 MrWall112/Advanced-Discord-Bot-js8
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
-Advanced-Discord-Bot-js8/commands/dadjokes.js
-ae2ab30  on 28 Nov 2017
-@MrWall112 MrWall112 added super cringe dad jokes
-
-70 lines (62 sloc)  4.17 KB
 const Discord = module.require('discord.js');
 
 var jokes = [
