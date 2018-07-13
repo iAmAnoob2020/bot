@@ -129,7 +129,7 @@ bot.on("message", async message => {
   }
 
   fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
-    if(err) console.log(Err)
+    if(err) console.log(err)
   });
 
   let prefix = prefixes[message.guild.id].prefixes;

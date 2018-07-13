@@ -15,7 +15,8 @@ module.exports.run = async (bot, message, args) => {
   .addField("sell", "Allows the user to sell an item!")
   .addField("8ball", "Allows the user to ask a question and have a random answer generated!")
   .addField("guilds", "Shows the servers the Bot is on.")
-  .addField("ping", "Displays the ping (no need to use prefix for this!)");
+  .addField("sexjoke", "Shows a sexual joke in the channel.")
+  .addField("dadjoke", "Shows a dad joke in the channel");
 
   message.channel.send(helpembed);
 
@@ -38,7 +39,8 @@ module.exports.run = async (bot, message, args) => {
   .addField("restart", "Allows the user to restart the Bot!")
   .addField("kill", "Allows the user to kill the bot!")
   .addField("start", "Allows the user to start the bot!")
-  .addField("activity", "Allows the user to change the activity of the Bot!");
+  .addField("activity", "Allows the user to change the activity of the Bot!")
+  .addField("status", "Allows the user to change the status of the Bot!");
 
   try{
     await message.author.send(modembed);
